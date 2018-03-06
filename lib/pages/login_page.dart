@@ -3,6 +3,7 @@ import '../ui/signup_form_overlay.dart';
 import '../model/login_data.dart';
 import '../util/login_validator.dart';
 import '../ui/login_form_overlay.dart';
+import 'main_page.dart';
 class LoginPage extends StatefulWidget {
   @override
   State createState() => new LoginPageState();
@@ -60,7 +61,7 @@ class LoginPageState extends State<LoginPage>{
                   color: Colors.white,
                   padding: new EdgeInsets.symmetric(vertical: 5.0),
                   child: new FlatButton(
-                      onPressed: null,
+                      onPressed: () => Navigator.pushReplacementNamed(context, "/main_page"),
                     child: new Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[

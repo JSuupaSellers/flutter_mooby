@@ -3,6 +3,7 @@ import '../ui/bottom_nav_Bar.dart';
 import 'profile_page.dart';
 import 'search_page.dart';
 import 'home_page.dart';
+import 'notification_page.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -19,7 +20,7 @@ final ThemeData _themeData = new ThemeData(
 
 class MainPageState extends State<MainPage> {
 
-  Map<int, Widget> pages = {0:new HomePage(),1:new SearchPage(),2:new ProfilePage()};
+  Map<int, Widget> pages = {0:new HomePage(),1:new SearchPage(),2:new NotificationPage(),3:new ProfilePage()};
   int pageIndex = 0;
 
   switchPages(int newIndex){

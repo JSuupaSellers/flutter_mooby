@@ -23,6 +23,7 @@ class BottomNavBarState extends State<BottomNavBar>{
     List<BottomNavigationBarItem> items = new List<BottomNavigationBarItem>();
     items.add(new BottomNavigationBarItem(icon: new Icon(Icons.home), title: new Text('Home')));
     items.add(new BottomNavigationBarItem(icon: new Icon(Icons.search), title: new Text('Search')));
+    items.add(new BottomNavigationBarItem(icon: new Icon(Icons.notifications), title: new Text("Alerts")));
     items.add(new BottomNavigationBarItem(icon: new Icon(Icons.account_circle), title: new Text('Profile')));
     return items;
   }
@@ -31,6 +32,7 @@ class BottomNavBarState extends State<BottomNavBar>{
   Widget build(BuildContext context){
     return new BottomNavigationBar(
       fixedColor: const Color(0xFFBC2025),
+      type: BottomNavigationBarType.fixed,
       items: buildNavbar(),
       currentIndex: index,
       onTap: (newIndex) =>
