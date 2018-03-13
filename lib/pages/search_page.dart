@@ -9,19 +9,22 @@ class SearchPage extends StatefulWidget {
   State createState() => new SearchPageState();
 }
 
-class SearchPageState extends State<SearchPage> implements MovieScreenView{
+class SearchPageState extends State<SearchPage> implements MovieScreenView {
   List<Movie> movies;
   MovieViewPresenter _presenter;
   NetworkData networkData;
   ScrollController controller;
 
+  bool isLoading = false;
+
   @override
-  void initState(){
+  void initState() {
     super.initState();
     movies = new List();
     controller = new ScrollController();
-    controller.addListener((){
-      if(controller.position.maxScrollExtent == controller.offset){
+    controller.addListener(() {
+      if (controller.position.maxScrollExtent == controller.offset) {
+        isLoading = true;
         _presenter.loadMovies();
       }
     });
@@ -31,7 +34,8 @@ class SearchPageState extends State<SearchPage> implements MovieScreenView{
 
   @override
   void onMoviesLoaded(List<Movie> list) {
-    setState((){
+    setState(() {
+      isLoading = false;
       movies.addAll(list);
     });
   }
@@ -43,12 +47,19 @@ class SearchPageState extends State<SearchPage> implements MovieScreenView{
         .size;
 
     return new Container(
-      child: new Scaffold(
-        appBar: new AppBar(
-          title: new Text('Search'),
-        ),
-        body: getMovieGrid(movies: movies, context: context, crossAxisCount: 2, controller: controller),
-      ),
+        child: new Stack(
+          children: <Widget>[
+            new Scaffold(
+              appBar: new AppBar(
+                title: new Text('Search'),
+              ),
+              body:getMovieGrid(movies: movies,
+                  context: context,
+                  crossAxisCount: 2,
+                  controller: controller),
+            ),
+          ],
+        )
     );
   }
 }
