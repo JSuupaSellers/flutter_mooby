@@ -98,10 +98,12 @@ class LoginPageState extends State<LoginPage>{
                       new Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          new Container(
-                            height: .5,
-                            width: 175.0,
-                            color: Colors.white70,
+                          new Expanded(
+                            child: new Container(
+                                margin: new EdgeInsets.only(left: 10.0),
+                                height: .5,
+                                color: Colors.white70,
+                            )
                           ),
                           new Container(
                             margin: new EdgeInsets.symmetric(horizontal: 4.0),
@@ -113,11 +115,13 @@ class LoginPageState extends State<LoginPage>{
                                 )
                             )
                           ),
-                          new Container(
-                            height: .5,
-                            width: 175.0,
-                            color: Colors.white70,
-                          )
+                          new Expanded(
+                            child: new Container(
+                                margin: new EdgeInsets.only(right: 10.0),
+                                height: .5,
+                                color: Colors.white70,
+                            )
+                          ),
                         ],
                       )
                     ],
