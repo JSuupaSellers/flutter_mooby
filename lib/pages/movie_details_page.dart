@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../model/movie.dart';
 import '../ui/movie_poster.dart';
+import '../util/date_formatter.dart';
 
 class MovieDetailsPage extends StatefulWidget {
   Movie _movie;
@@ -48,11 +49,11 @@ class MovieDetailsPageState extends State<MovieDetailsPage> {
             ),
             new Container(
               padding: const EdgeInsets.all(16.0),
-              child: new Row(
+              child: new Wrap(
+                  spacing: 70.0,
                   children: <Widget>[
-                    new Flexible(
-                      child: new Text(_movie.name),
-                    ),
+                      new Text(_movie.name),
+                      new Text('Release Year: ' + DateFormatter.getYear(_movie.releaseDate))
                   ]
               ),
             ),

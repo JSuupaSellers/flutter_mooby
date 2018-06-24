@@ -10,11 +10,14 @@ class NetworkData {
     _networkUtil = new NetworkUtil();
   }
 
-  Future<List<Movie>> fetchPopularMovies(int page) =>
-      _networkUtil.request("https://api.themoviedb.org/3/movie/popular?"
-          "api_key=$apiKey&language=en-US&page=$page")
-          .then((dynamic res) {
-        List data = res['results'];
-        return data.map((obj) => new Movie.map(obj)).toList();
-      });
+  Future<List<Movie>> fetchPopularMovies(int page) async {
+    List<Movie> list = [];
+    await _networkUtil.request("https://api.themoviedb.org/3/movie/popular?"
+        "api_key=$apiKey&language=en-US&page=$page")
+        .then((dynamic res) {
+      List data = res['results'];
+      list = data.map((obj) => new Movie.map(obj)).toList();
+    });
+    return list;
+  }
 }
